@@ -6,12 +6,12 @@
     <title>БАРАК — визуализация</title>
     <style>
       :root {
-        --bg: #141816;
-        --panel: #1c221f;
-        --text: #e8ebe6;
-        --muted: #9aa39a;
+        --bg: #e7dfc8;
+        --panel: #f3ead4;
+        --text: #2b2418;
+        --muted: #6a5e48;
         --accent: #c45c26;
-        --border: #3a453d;
+        --border: #cbb996;
       }
       * {
         box-sizing: border-box;
@@ -20,112 +20,91 @@
         margin: 0;
         font-family: "Segoe UI", "Helvetica Neue", sans-serif;
         background:
-          radial-gradient(1200px 600px at 20% -10%, rgba(196, 92, 38, 0.18), transparent),
-          radial-gradient(900px 500px at 100% 0%, rgba(61, 143, 122, 0.12), transparent),
+          radial-gradient(900px 500px at 10% 0%, rgba(196, 92, 38, 0.12), transparent),
+          radial-gradient(800px 400px at 90% 10%, rgba(110, 130, 70, 0.12), transparent),
           var(--bg);
         color: var(--text);
       }
-      header {
-        padding: 28px 20px 12px;
-        max-width: 1100px;
+      header,
+      main,
+      footer {
+        max-width: 980px;
         margin: 0 auto;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      header {
+        padding-top: 36px;
+        padding-bottom: 8px;
       }
       .brand {
         color: var(--accent);
-        letter-spacing: 0.28em;
+        letter-spacing: 0.24em;
         font-weight: 800;
-        font-size: 14px;
-        text-transform: uppercase;
-        margin: 0 0 8px;
+        font-size: 13px;
+        margin: 0 0 10px;
       }
       h1 {
         margin: 0;
-        font-size: clamp(28px, 5vw, 44px);
-        line-height: 1.1;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.08;
       }
       .lead {
         color: var(--muted);
-        max-width: 60ch;
-        line-height: 1.5;
-        margin: 12px 0 0;
+        max-width: 52ch;
+        line-height: 1.55;
+        margin: 14px 0 0;
+        font-size: 17px;
       }
       nav {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 18px;
+        gap: 10px;
+        margin-top: 22px;
       }
       nav a {
         color: var(--text);
         text-decoration: none;
         border: 1px solid var(--border);
         background: var(--panel);
-        padding: 8px 12px;
-        border-radius: 8px;
-        font-size: 13px;
-      }
-      nav a:hover {
-        border-color: var(--accent);
-        color: var(--accent);
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-size: 14px;
       }
       main {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 12px 20px 48px;
+        padding-top: 18px;
+        padding-bottom: 56px;
         display: grid;
-        gap: 28px;
+        gap: 32px;
       }
       section {
-        background: rgba(28, 34, 31, 0.85);
+        background: rgba(243, 234, 212, 0.88);
         border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 18px;
+        border-radius: 18px;
+        padding: 22px;
       }
       section h2 {
-        margin: 0 0 6px;
-        font-size: 22px;
+        margin: 0 0 8px;
+        font-size: 24px;
       }
       section p {
-        margin: 0 0 14px;
+        margin: 0 0 16px;
         color: var(--muted);
-        line-height: 1.45;
+        line-height: 1.5;
       }
       .frame {
-        border-radius: 12px;
+        border-radius: 14px;
         overflow: hidden;
         border: 1px solid var(--border);
-        background: #0d100e;
+        background: #d9d0b8;
       }
       .frame img {
         display: block;
         width: 100%;
         height: auto;
       }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 14px;
-      }
-      .card {
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        overflow: hidden;
-        background: #0d100e;
-      }
-      .card img {
-        width: 100%;
-        display: block;
-      }
-      .card span {
-        display: block;
-        padding: 10px 12px;
-        font-size: 13px;
-        color: var(--muted);
-      }
       footer {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 20px 40px;
+        padding-bottom: 40px;
         color: var(--muted);
         font-size: 13px;
       }
@@ -134,13 +113,16 @@
   <body>
     <header>
       <p class="brand">БАРАК</p>
-      <h1>Визуализация игры</h1>
+      <h1>Визуализация в тёплых тонах</h1>
       <p class="lead">
-        Сводная картинка продукта: цикл игрока, прогрессия камер с боссов, карта зоны и системы
-        шмота / наколок / привилегий.
+        Ориентир — оттенки «Проходной» и классической «Тюряги»: охра, олива, тёплое дерево. Без
+        холодного бетона и без тесной компоновки.
       </p>
       <nav>
+        <a href="#prohodnaya">Проходная</a>
         <a href="#cover">Обложка</a>
+        <a href="#cell">Камера</a>
+        <a href="#dvor">Двор</a>
         <a href="#loop">Цикл</a>
         <a href="#boss">Босс → камера</a>
         <a href="#zone">Зона</a>
@@ -149,78 +131,65 @@
     </header>
 
     <main>
+      <section id="prohodnaya">
+        <h2>Проходная — референс палитры</h2>
+        <p>Тёплый металл, охра, олива — базовые цвета продукта.</p>
+        <div class="frame">
+          <img src="barak-tone-prohodnaya.png" alt="Проходная" />
+        </div>
+      </section>
+
       <section id="cover">
         <h2>Обложка</h2>
-        <p>Ключевой визуал продукта.</p>
         <div class="frame">
-          <img src="barak-viz-pitch-cover.png" alt="Обложка БАРАК" />
+          <img src="barak-tone-cover.png" alt="Обложка" />
+        </div>
+      </section>
+
+      <section id="cell">
+        <h2>Камера</h2>
+        <div class="frame">
+          <img src="barak-tone-cell-hero.png" alt="Камера" />
+        </div>
+      </section>
+
+      <section id="dvor">
+        <h2>Двор</h2>
+        <div class="frame">
+          <img src="barak-tone-dvor.png" alt="Двор" />
         </div>
       </section>
 
       <section id="loop">
         <h2>Игровой цикл</h2>
-        <p>Камера → рейд → лут → прокачка привилегий.</p>
+        <p>Больше воздуха между блоками, крупные панели.</p>
         <div class="frame">
-          <img src="barak-viz-game-loop.png" alt="Игровой цикл" />
+          <img src="barak-tone-loop.png" alt="Цикл" />
         </div>
       </section>
 
       <section id="boss">
         <h2>Босс → камера</h2>
-        <p>Чем серьёзнее босс, тем выше класс камеры и привилегий.</p>
         <div class="frame">
-          <img src="barak-viz-boss-to-cell.png" alt="Прогрессия босс-камера" />
+          <img src="barak-tone-boss-cells.png" alt="Прогрессия" />
         </div>
       </section>
 
       <section id="zone">
         <h2>Карта зоны</h2>
-        <p>Камера, двор, столовка, баня, кольщик, мастерская, ШИЗО, штаб, проходная, рейд.</p>
         <div class="frame">
-          <img src="barak-viz-zone-overview.png" alt="Карта зоны" />
+          <img src="barak-tone-zone.png" alt="Зона" />
         </div>
       </section>
 
       <section id="systems">
         <h2>Системы</h2>
-        <p>Шмот, наколки и привилегии камеры как три оси прогрессии.</p>
         <div class="frame">
-          <img src="barak-viz-systems.png" alt="Системы игры" />
-        </div>
-      </section>
-
-      <section>
-        <h2>Слои визуала</h2>
-        <p>Как это собирается в продукте.</p>
-        <div class="grid">
-          <div class="card">
-            <span
-              ><strong style="color: var(--text)">1. Фон локации</strong><br />камера / двор /
-              столовка</span
-            >
-          </div>
-          <div class="card">
-            <span
-              ><strong style="color: var(--text)">2. Герой</strong><br />одна поза анфас, рука на
-              колене</span
-            >
-          </div>
-          <div class="card">
-            <span
-              ><strong style="color: var(--text)">3. Слои</strong><br />шмот + наколки поверх
-              базы</span
-            >
-          </div>
-          <div class="card">
-            <span
-              ><strong style="color: var(--text)">4. UI</strong><br />папиросы, кнопки, рейд,
-              инвентарь</span
-            >
-          </div>
+          <img src="barak-tone-systems.png" alt="Системы" />
         </div>
       </section>
     </main>
 
-    <footer>БАРАК · визуализация концепта · открой этот файл в браузере</footer>
+    <footer>БАРАК · тёплая палитра · docs/viz/index.html</footer>
   </body>
 </html>

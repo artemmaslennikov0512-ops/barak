@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>БАРАК — визуализация</title>
+    <title>БАРАК — локации</title>
     <style>
       :root {
-        --bg: #e7dfc8;
-        --panel: #f3ead4;
-        --text: #2b2418;
-        --muted: #6a5e48;
-        --accent: #c45c26;
-        --border: #cbb996;
+        --bg: #d8d6cc;
+        --panel: #eceae2;
+        --text: #2a2d28;
+        --muted: #5f6560;
+        --accent: #a85a32;
+        --border: #b7b6aa;
       }
       * {
         box-sizing: border-box;
@@ -20,8 +20,7 @@
         margin: 0;
         font-family: "Segoe UI", "Helvetica Neue", sans-serif;
         background:
-          radial-gradient(900px 500px at 10% 0%, rgba(196, 92, 38, 0.12), transparent),
-          radial-gradient(800px 400px at 90% 10%, rgba(110, 130, 70, 0.12), transparent),
+          radial-gradient(900px 500px at 10% 0%, rgba(120, 130, 90, 0.14), transparent),
           var(--bg);
         color: var(--text);
       }
@@ -35,7 +34,6 @@
       }
       header {
         padding-top: 36px;
-        padding-bottom: 8px;
       }
       .brand {
         color: var(--accent);
@@ -46,57 +44,52 @@
       }
       h1 {
         margin: 0;
-        font-size: clamp(30px, 5vw, 46px);
-        line-height: 1.08;
+        font-size: clamp(28px, 5vw, 42px);
       }
       .lead {
         color: var(--muted);
-        max-width: 52ch;
+        max-width: 54ch;
         line-height: 1.55;
-        margin: 14px 0 0;
-        font-size: 17px;
+        margin: 12px 0 0;
       }
       nav {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 22px;
+        gap: 8px;
+        margin-top: 18px;
       }
       nav a {
         color: var(--text);
         text-decoration: none;
         border: 1px solid var(--border);
         background: var(--panel);
-        padding: 10px 14px;
-        border-radius: 10px;
-        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 13px;
       }
       main {
-        padding-top: 18px;
-        padding-bottom: 56px;
+        padding: 20px 24px 56px;
         display: grid;
-        gap: 32px;
+        gap: 28px;
       }
       section {
-        background: rgba(243, 234, 212, 0.88);
+        background: rgba(236, 234, 226, 0.9);
         border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 22px;
+        border-radius: 16px;
+        padding: 18px;
       }
       section h2 {
         margin: 0 0 8px;
-        font-size: 24px;
+        font-size: 22px;
       }
       section p {
-        margin: 0 0 16px;
+        margin: 0 0 14px;
         color: var(--muted);
-        line-height: 1.5;
       }
       .frame {
-        border-radius: 14px;
+        border-radius: 12px;
         overflow: hidden;
         border: 1px solid var(--border);
-        background: #d9d0b8;
       }
       .frame img {
         display: block;
@@ -104,7 +97,7 @@
         height: auto;
       }
       footer {
-        padding-bottom: 40px;
+        padding-bottom: 36px;
         color: var(--muted);
         font-size: 13px;
       }
@@ -113,83 +106,66 @@
   <body>
     <header>
       <p class="brand">БАРАК</p>
-      <h1>Визуализация в тёплых тонах</h1>
+      <h1>Локации — приглушённая палитра</h1>
       <p class="lead">
-        Ориентир — оттенки «Проходной» и классической «Тюряги»: охра, олива, тёплое дерево. Без
-        холодного бетона и без тесной компоновки.
+        Олива и пыльный беж без сильной желтизны. Ближе к реальной «Тюряге», без бетонного
+        холода и без «жёлтого фильтра».
       </p>
       <nav>
-        <a href="#prohodnaya">Проходная</a>
-        <a href="#cover">Обложка</a>
         <a href="#cell">Камера</a>
+        <a href="#prohodnaya">Проходная</a>
         <a href="#dvor">Двор</a>
-        <a href="#loop">Цикл</a>
-        <a href="#boss">Босс → камера</a>
-        <a href="#zone">Зона</a>
-        <a href="#systems">Системы</a>
+        <a href="#stolovka">Столовка</a>
+        <a href="#banya">Баня</a>
+        <a href="#kolschik">Кольщик</a>
+        <a href="#masterskaya">Мастерская</a>
+        <a href="#brigade">Штаб</a>
+        <a href="#shizo">ШИЗО</a>
+        <a href="#raid">Рейд</a>
       </nav>
     </header>
-
     <main>
-      <section id="prohodnaya">
-        <h2>Проходная — референс палитры</h2>
-        <p>Тёплый металл, охра, олива — базовые цвета продукта.</p>
-        <div class="frame">
-          <img src="barak-tone-prohodnaya.png" alt="Проходная" />
-        </div>
-      </section>
-
-      <section id="cover">
-        <h2>Обложка</h2>
-        <div class="frame">
-          <img src="barak-tone-cover.png" alt="Обложка" />
-        </div>
-      </section>
-
       <section id="cell">
         <h2>Камера</h2>
-        <div class="frame">
-          <img src="barak-tone-cell-hero.png" alt="Камера" />
-        </div>
+        <div class="frame"><img src="barak-loc2-cell-hero.png" alt="Камера" /></div>
       </section>
-
+      <section id="prohodnaya">
+        <h2>Проходная</h2>
+        <div class="frame"><img src="barak-loc2-prohodnaya.png" alt="Проходная" /></div>
+      </section>
       <section id="dvor">
         <h2>Двор</h2>
-        <div class="frame">
-          <img src="barak-tone-dvor.png" alt="Двор" />
-        </div>
+        <div class="frame"><img src="barak-loc2-dvor.png" alt="Двор" /></div>
       </section>
-
-      <section id="loop">
-        <h2>Игровой цикл</h2>
-        <p>Больше воздуха между блоками, крупные панели.</p>
-        <div class="frame">
-          <img src="barak-tone-loop.png" alt="Цикл" />
-        </div>
+      <section id="stolovka">
+        <h2>Столовка</h2>
+        <div class="frame"><img src="barak-loc2-stolovka.png" alt="Столовка" /></div>
       </section>
-
-      <section id="boss">
-        <h2>Босс → камера</h2>
-        <div class="frame">
-          <img src="barak-tone-boss-cells.png" alt="Прогрессия" />
-        </div>
+      <section id="banya">
+        <h2>Баня</h2>
+        <div class="frame"><img src="barak-loc2-banya.png" alt="Баня" /></div>
       </section>
-
-      <section id="zone">
-        <h2>Карта зоны</h2>
-        <div class="frame">
-          <img src="barak-tone-zone.png" alt="Зона" />
-        </div>
+      <section id="kolschik">
+        <h2>Кольщик</h2>
+        <div class="frame"><img src="barak-loc2-kolschik.png" alt="Кольщик" /></div>
       </section>
-
-      <section id="systems">
-        <h2>Системы</h2>
-        <div class="frame">
-          <img src="barak-tone-systems.png" alt="Системы" />
-        </div>
+      <section id="masterskaya">
+        <h2>Мастерская</h2>
+        <div class="frame"><img src="barak-loc2-masterskaya.png" alt="Мастерская" /></div>
+      </section>
+      <section id="brigade">
+        <h2>Штаб бригады</h2>
+        <div class="frame"><img src="barak-loc2-brigade.png" alt="Штаб" /></div>
+      </section>
+      <section id="shizo">
+        <h2>ШИЗО</h2>
+        <div class="frame"><img src="barak-loc2-shizo.png" alt="ШИЗО" /></div>
+      </section>
+      <section id="raid">
+        <h2>Рейд</h2>
+        <div class="frame"><img src="barak-loc2-raid.png" alt="Рейд" /></div>
       </section>
     </main>
-
-    <footer>БАРАК · тёплая палитра · docs/viz/index.html</footer>
+    <footer>БАРАК · loc2 muted palette · docs/viz/index.html</footer>
   </body>
 </html>

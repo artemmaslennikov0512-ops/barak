@@ -62,7 +62,7 @@ fun ResourceBar(player: PlayerState) {
         Text("БАРАК", color = Accent)
         Text("Пап. ${player.cigarettes}", color = Ink)
         Text("Эн. ${player.energy}/${player.maxEnergy}", color = Ink)
-        Text("Сила ${player.strength}", color = Muted)
+        Text(player.location.title, color = Muted)
     }
 }
 

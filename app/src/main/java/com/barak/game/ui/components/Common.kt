@@ -30,11 +30,14 @@ import com.barak.game.ui.theme.Muted
 import com.barak.game.ui.theme.Panel
 
 @Composable
-fun AssetImage(path: String, modifier: Modifier = Modifier) {
+fun AssetImage(
+    path: String,
+    modifier: Modifier = Modifier,
+) {
     val context = LocalContext.current
     val bitmap = remember(path) {
         runCatching {
-            context.assets.open(path).use { BitmapFactory.decodeStream(it) }
+            context.assets.open(path).use(BitmapFactory::decodeStream)
         }.getOrNull()
     }
     if (bitmap != null) {
@@ -45,7 +48,7 @@ fun AssetImage(path: String, modifier: Modifier = Modifier) {
             modifier = modifier,
         )
     } else {
-        Box(modifier.background(Panel))
+        Box(modifier = modifier.background(Panel))
     }
 }
 
@@ -55,14 +58,14 @@ fun ResourceBar(player: PlayerState) {
         modifier = Modifier
             .fillMaxWidth()
             .background(Panel)
-            .border(1.dp, Border)
+            .border(width = 1.dp, color = Border)
             .padding(horizontal = 12.dp, vertical = 10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        Text("БАРАК", color = Accent)
-        Text("Пап. ${player.cigarettes}", color = Ink)
-        Text("Эн. ${player.energy}/${player.maxEnergy}", color = Ink)
-        Text(player.location.title, color = Muted)
+        Text(text = "БАРАК", color = Accent)
+        Text(text = "Пап. ${player.cigarettes}", color = Ink)
+        Text(text = "Эн. ${player.energy}/${player.maxEnergy}", color = Ink)
+        Text(text = player.location.title, color = Muted)
     }
 }
 
@@ -78,23 +81,30 @@ fun BarakButton(
         enabled = enabled,
         modifier = modifier.fillMaxWidth().height(48.dp),
         shape = RoundedCornerShape(10.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = Accent, contentColor = Panel),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Accent,
+            contentColor = Panel,
+        ),
     ) {
-        Text(text)
+        Text(text = text)
     }
 }
 
 @Composable
-fun PanelCard(title: String, body: String, modifier: Modifier = Modifier) {
+fun PanelCard(
+    title: String,
+    body: String,
+    modifier: Modifier = Modifier,
+) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(Panel, RoundedCornerShape(12.dp))
-            .border(1.dp, Border, RoundedCornerShape(12.dp))
+            .background(color = Panel, shape = RoundedCornerShape(12.dp))
+            .border(width = 1.dp, color = Border, shape = RoundedCornerShape(12.dp))
             .padding(14.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        Text(title, color = Ink)
-        Text(body, color = Muted)
+        Text(text = title, color = Ink)
+        Text(text = body, color = Muted)
     }
 }

@@ -39,3 +39,18 @@ app/src/main/java/com/barak/game/
   MainActivity.kt
 app/src/main/assets/concept/  # арты локаций
 ```
+
+## Если Sync падает: Unsupported class file major version 69
+
+Это Java 25. Нужна Java 17 или 21.
+
+В Android Studio:
+**Settings → Build Tools → Gradle → Gradle JDK** → выбери **Eclipse Temurin 17** (не jbr-25 и не GRADLE_LOCAL_JAVA_HOME 25).
+
+Или создай файл `C:\\Users\\<ТЫ>\\.gradle\\gradle.properties` со строкой:
+
+```properties
+org.gradle.java.home=C:\\Users\\masle\\AppData\\Local\\Programs\\Eclipse Adoptium\\jdk-17.0.18.8-hotspot
+```
+
+(путь поправь под себя, если JDK в другом месте)

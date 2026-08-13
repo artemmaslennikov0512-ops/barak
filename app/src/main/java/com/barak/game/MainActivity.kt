@@ -18,11 +18,8 @@ import androidx.navigation.compose.rememberNavController
 import com.barak.game.data.ZoneLocation
 import com.barak.game.game.GameViewModel
 import com.barak.game.ui.screens.CellScreen
-import com.barak.game.ui.screens.InventoryScreen
 import com.barak.game.ui.screens.LocationScreen
 import com.barak.game.ui.screens.MapScreen
-import com.barak.game.ui.screens.RaidScreen
-import com.barak.game.ui.screens.TattooScreen
 import com.barak.game.ui.theme.BarakTheme
 import com.barak.game.ui.theme.Beige
 
@@ -44,61 +41,32 @@ class MainActivity : ComponentActivity() {
                         vm.clearToast()
                     }
 
-                    NavHost(navController = nav, startDestination = "cell") {
-                        composable("cell") {
-                            CellScreen(
-                                player = ui.player,
-                                onRest = vm::rest,
-                                onOpenMap = { nav.navigate("map") },
-                                onOpenRaid = { nav.navigate("raid") },
-                                onOpenInventory = { nav.navigate("inventory") },
-                                onOpenTattoos = { nav.navigate("tattoos") },
-                                onChangeCell = vm::changeCell,
-                            )
+                    NavHost(navController = nav, startDestination = "home") {
+                        composable("home") {
+                            if (ui.player.location == ZoneLocation.CELL) {
+                                CellScreen(
+                                    player = ui.player,
+                                    onRest = vm::rest,
+                                    onOpenMap = { nav.navigate("map") },
+                                )
+                            } else {
+                                LocationScreen(
+                                    player = ui.player,
+                                    onBackToCell = {
+                                        vm.goTo(ZoneLocation.CELL)
+                                        nav.popBackStack("home", inclusive = false)
+                                    },
+                                    onOpenMap = { nav.navigate("map") },
+                                )
+                            }
                         }
                         composable("map") {
                             MapScreen(
                                 player = ui.player,
-                                current = ui.location,
                                 onOpen = { loc ->
-                                    vm.openLocation(loc)
-                                    if (loc == ZoneLocation.CELL) {
-                                        nav.popBackStack("cell", inclusive = false)
-                                    } else {
-                                        nav.navigate("location")
-                                    }
+                                    vm.goTo(loc)
+                                    nav.popBackStack("home", inclusive = false)
                                 },
-                                onBack = { nav.popBackStack() },
-                            )
-                        }
-                        composable("location") {
-                            LocationScreen(
-                                player = ui.player,
-                                location = ui.location,
-                                onBack = {
-                                    nav.popBackStack("cell", inclusive = false)
-                                },
-                            )
-                        }
-                        composable("raid") {
-                            RaidScreen(
-                                player = ui.player,
-                                onStart = vm::startRaid,
-                                onHit = vm::hitBoss,
-                                onBack = { nav.popBackStack() },
-                            )
-                        }
-                        composable("inventory") {
-                            InventoryScreen(
-                                player = ui.player,
-                                onEquip = vm::equip,
-                                onBack = { nav.popBackStack() },
-                            )
-                        }
-                        composable("tattoos") {
-                            TattooScreen(
-                                player = ui.player,
-                                onBuy = vm::buyTattoo,
                                 onBack = { nav.popBackStack() },
                             )
                         }

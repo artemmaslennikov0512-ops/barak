@@ -14,11 +14,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.barak.game.data.PlayerState
 import com.barak.game.data.ZoneLocation
 import com.barak.game.ui.components.AssetImage
 import com.barak.game.ui.components.BarakButton
+import com.barak.game.ui.components.PanelCard
 import com.barak.game.ui.components.ResourceBar
-import com.barak.game.data.PlayerState
 import com.barak.game.ui.theme.Beige
 import com.barak.game.ui.theme.Ink
 import com.barak.game.ui.theme.Muted
@@ -26,7 +27,6 @@ import com.barak.game.ui.theme.Muted
 @Composable
 fun MapScreen(
     player: PlayerState,
-    current: ZoneLocation,
     onOpen: (ZoneLocation) -> Unit,
     onBack: () -> Unit,
 ) {
@@ -44,7 +44,7 @@ fun MapScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text("Карта зоны", color = Ink)
-            Text("Сейчас: ${current.title}", color = Muted)
+            Text("Сейчас: ${player.location.title}", color = Muted)
             ZoneLocation.entries.forEach { loc ->
                 Column(
                     modifier = Modifier
@@ -53,7 +53,8 @@ fun MapScreen(
                     verticalArrangement = Arrangement.spacedBy(6.dp),
                 ) {
                     Text(loc.title, color = Ink)
-                    AssetImage(loc.asset, Modifier.fillMaxWidth().height(160.dp))
+                    Text(loc.description, color = Muted)
+                    AssetImage(loc.asset, Modifier.fillMaxWidth().height(150.dp))
                 }
             }
             BarakButton("Назад", onBack)
@@ -64,9 +65,10 @@ fun MapScreen(
 @Composable
 fun LocationScreen(
     player: PlayerState,
-    location: ZoneLocation,
-    onBack: () -> Unit,
+    onBackToCell: () -> Unit,
+    onOpenMap: () -> Unit,
 ) {
+    val location = player.location
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -81,9 +83,17 @@ fun LocationScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text(location.title, color = Ink)
-            AssetImage(location.asset, Modifier.fillMaxWidth().height(360.dp))
-            Text("Локация зоны. Позже здесь будут действия и NPC.", color = Muted)
-            BarakButton("В камеру", onBack)
+            AssetImage(location.asset, Modifier.fillMaxWidth().height(380.dp))
+            PanelCard(
+                title = location.title,
+                body = location.description + "\n\nДействия локации добавим по мере разработки.",
+            )
+            if (location == ZoneLocation.CELL) {
+                BarakButton("В камеру", onBackToCell)
+            } else {
+                BarakButton("Вернуться в камеру", onBackToCell)
+            }
+            BarakButton("Карта зоны", onOpenMap)
         }
     }
 }
